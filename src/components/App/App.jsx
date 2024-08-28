@@ -66,89 +66,11 @@ function App() {
   const { values, handleChange, errors, isValid, setValues, resetForm } =
     useFormAndValidation();
 
-  // const [formData, setFormData] = useState({
-  //   name: "",
-  //   url: "",
-  //   weather: "",
-  // });
-
-  // const handleBlur = (evt) => {
-  //   const { name, value } = evt.target;
-  //   const newErrors = validateField(name, value);
-  //   setErrors((prevErrors) => ({
-  //     ...prevErrors,
-  //     ...newErrors,
-  //   }));
-  //   const formErrors = validateForm(formData);
-  //   setIsFormValid(Object.keys(formErrors).length === 0);
-  // };
-
-  // const handleRadioChange = (evt) => {
-  //   const { value } = evt.target;
-  //   setFormData({
-  //     ...formData,
-  //     weather: value,
-  //   });
-  //   setErrors((prevErrors) => {
-  //     const newErrors = {
-  //       ...prevErrors,
-  //     };
-  //     delete newErrors.weather;
-  //     return newErrors;
-  //   });
-  //   const newErrors = validateForm({ ...formData, weather: value });
-  //   setIsFormValid(Object.keys(newErrors).length === 0);
-  // };
-
-  // const validateField = (name, value) => {
-  //   const newErrors = {};
-
-  //   if (name === "name") {
-  //     if (!value.trim()) {
-  //       newErrors.name = "Name is required";
-  //     } else if (value.length < 2) {
-  //       newErrors.name = "Name must be at least 2 characters";
-  //     }
-  //   }
-
-  //   if (name === "url") {
-  //     if (!value.trim()) {
-  //       newErrors.url = "Url is required";
-  //     } else if (!value.startsWith("https://")) {
-  //       newErrors.url = "Url must contain an https link";
-  //     }
-  //   }
-  //   if (name === "weather" && !value) {
-  //     newErrors.weather = "Please select a weather type";
-  //   }
-
-  //   return newErrors;
-  // };
-
   const handleSubmit = (evt) => {
     evt.preventDefault();
-    // const newErrors = validateForm(formData);
-    // setErrors(newErrors);
-    // setIsFormValid(Object.keys(newErrors).length === 0);
-
-    // if (Object.keys(newErrors).length === 0) {
-    //   setFormData({
-    //     name: "",
-    //     url: "",
-    //     weather: "",
-    //   });
-    //   setIsFormValid(false);
-    // }
+    console.log("Form data: values");
+    resetForm();
   };
-
-  // const validateForm = (data) => {
-  //   const errors = {};
-
-  //   errors.name = validateField("name", data.name).name;
-  //   errors.url = validateField("url", data.url).url;
-  //   errors.weather = validateField("weather", data.weather).weather;
-  //   return errors;
-  // };
 
   return (
     <div className="page">
@@ -173,9 +95,9 @@ function App() {
             id="name"
             name="name"
             placeholder="Name"
-            value={formData.name}
+            value={values.name || ""}
             onChange={handleChange}
-            onBlur={handleBlur}
+            required
           />
           {errors.name && <span className="modal__error">{errors.name}</span>}
         </label>
@@ -187,9 +109,9 @@ function App() {
             id="imageUrl"
             placeholder="Image URL"
             name="url"
-            value={formData.url}
+            value={values.url || ""}
             onChange={handleChange}
-            onBlur={handleBlur}
+            required
           />
           {errors.url && <span className="modal__error">{errors.url}</span>}
         </label>
@@ -202,8 +124,7 @@ function App() {
               id="hot"
               name="weather"
               value="Hot"
-              onChange={handleRadioChange}
-              checked={formData.weather === "Hot"}
+              required
             />
             Hot
           </label>
@@ -218,8 +139,7 @@ function App() {
               id="warm"
               name="weather"
               value="Warm"
-              onChange={handleRadioChange}
-              checked={formData.weather === "Warm"}
+              required
             />
             Warm
           </label>
@@ -234,8 +154,7 @@ function App() {
               id="cold"
               name="weather"
               value="Cold"
-              onChange={handleRadioChange}
-              checked={formData.weather === "Cold"}
+              required
             />
             Cold
           </label>
