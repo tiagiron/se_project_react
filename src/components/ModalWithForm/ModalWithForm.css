@@ -62,12 +62,16 @@
   font-size: 16px;
   line-height: 20px;
   color: #fff;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: #000;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   width: 124px;
   transition: linear 5ms background-color;
+}
+
+.modal__submit_disabled {
+  background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modal__submit:hover {

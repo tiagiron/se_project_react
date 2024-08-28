@@ -17,11 +17,19 @@ function App() {
   });
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+
+  /*I know form validation is a hot mess - working on it but 
+  haven't heard from tutors in over a day - any advice is so
+   appreciated but mostly want feedback on the required content 
+   right now, THANK YOU */
+
   const [formData, setFormData] = useState({
     name: "",
     url: "",
+    weather: "",
   });
   const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const handleChange = (evt) => {
     const { name, value } = evt.target;
@@ -29,27 +37,92 @@ function App() {
       ...formData,
       [name]: value,
     });
-    const newErrors = validateForm(formData);
-    setErrors(newErrors);
+    setErrors((prevErrors) => {
+      const newErrors = {
+        ...prevErrors,
+      };
+      delete newErrors[name];
+      return newErrors;
+    });
+    const newErrors = validateForm({ ...formData, [name]: value });
+    setIsFormValid(Object.keys(newErrors).length === 0);
+  };
+
+  const handleBlur = (evt) => {
+    const { name, value } = evt.target;
+    const newErrors = validateField(name, value);
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      ...newErrors,
+    }));
+    const formErrors = validateForm(formData);
+    setIsFormValid(Object.keys(formErrors).length === 0);
+  };
+
+  const handleRadioChange = (evt) => {
+    const { value } = evt.target;
+    setFormData({
+      ...formData,
+      weather: value,
+    });
+    setErrors((prevErrors) => {
+      const newErrors = {
+        ...prevErrors,
+      };
+      delete newErrors.weather;
+      return newErrors;
+    });
+    const newErrors = validateForm({ ...formData, weather: value });
+    setIsFormValid(Object.keys(newErrors).length === 0);
+  };
+
+  const validateField = (name, value) => {
+    const newErrors = {};
+
+    if (name === "name") {
+      if (!value.trim()) {
+        newErrors.name = "Name is required";
+      } else if (value.length < 2) {
+        newErrors.name = "Name must be at least 2 characters";
+      }
+    }
+
+    if (name === "url") {
+      if (!value.trim()) {
+        newErrors.url = "Url is required";
+      } else if (!value.startsWith("https://")) {
+        newErrors.url = "Url must contain an https link";
+      }
+    }
+    if (name === "weather" && !value) {
+      newErrors.weather = "Please select a weather type";
+    }
+
+    return newErrors;
   };
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
+    const newErrors = validateForm(formData);
+    setErrors(newErrors);
+    setIsFormValid(Object.keys(newErrors).length === 0);
+
+    if (Object.keys(newErrors).length === 0) {
+      setFormData({
+        name: "",
+        url: "",
+        weather: "",
+      });
+      setIsFormValid(false);
+    }
   };
 
   const validateForm = (data) => {
     const errors = {};
-    if (!data.name.trim()) {
-      errors.name = "Name is required";
-    } else if (data.name.length < 2) {
-      errors.name = "Name must be at least 2 characters";
-    }
 
-    if (!data.url.trim()) {
-      errors.url = "Url is required";
-    } else if (!data.email.contains("https://")) {
-      errors.url = "Url must contain an https link";
-    }
+    errors.name = validateField("name", data.name).name;
+    errors.url = validateField("url", data.url).url;
+    errors.weather = validateField("weather", data.weather).weather;
     return errors;
   };
 
@@ -108,6 +181,7 @@ function App() {
         isOpen={activeModal === "add-garment"}
         onClose={closeActiveModal}
         onSubmit={handleSubmit}
+        isFormValid={isFormValid}
       >
         <label htmlFor="name" className="modal__label">
           Name{" "}
@@ -119,6 +193,7 @@ function App() {
             placeholder="Name"
             value={formData.name}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
           {errors.name && <span className="modal__error">{errors.name}</span>}
         </label>
@@ -132,13 +207,22 @@ function App() {
             name="url"
             value={formData.url}
             onChange={handleChange}
+            onBlur={handleBlur}
           />
           {errors.url && <span className="modal__error">{errors.url}</span>}
         </label>
         <fieldset className="modal__radio-button">
           <legend className="modal__legend">Select the weather type:</legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
-            <input className="modal__radio-input" type="radio" id="hot" />
+            <input
+              className="modal__radio-input"
+              type="radio"
+              id="hot"
+              name="weather"
+              value="Hot"
+              onChange={handleRadioChange}
+              checked={formData.weather === "Hot"}
+            />
             Hot
           </label>
 
@@ -146,7 +230,15 @@ function App() {
             htmlFor="warm"
             className="modal__label modal__label_type_radio"
           >
-            <input className="modal__radio-input" type="radio" id="warm" />
+            <input
+              className="modal__radio-input"
+              type="radio"
+              id="warm"
+              name="weather"
+              value="Warm"
+              onChange={handleRadioChange}
+              checked={formData.weather === "Warm"}
+            />
             Warm
           </label>
 
@@ -154,9 +246,20 @@ function App() {
             htmlFor="cold"
             className="modal__label modal__label_type_radio"
           >
-            <input className="modal__radio-input" type="radio" id="cold" />
+            <input
+              className="modal__radio-input"
+              type="radio"
+              id="cold"
+              name="weather"
+              value="Cold"
+              onChange={handleRadioChange}
+              checked={formData.weather === "Cold"}
+            />
             Cold
           </label>
+          {errors.weather && (
+            <span className="modal__error">{errors.weather}</span>
+          )}
         </fieldset>
       </ModalWithForm>
       <ItemModal
