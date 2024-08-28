@@ -1,0 +1,69 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 32px 0 28px;
+  font-family: "Cabinet-Grotesk", arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.header__logo {
+  margin-right: 24px;
+}
+
+.header__location {
+  margin: 0;
+}
+
+.header__button {
+  margin: 0 20px 0 auto;
+  border: none;
+  font-family: "Cabinet-Grotesk", arial, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  background-color: #f3f3f3;
+}
+
+.header__button:hover {
+  cursor: pointer;
+}
+
+.header__user-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header__username {
+  margin: 0;
+}
+
+.header__dropdown-container {
+  display: none;
+}
+
+/* // Working on Responsive Design// */
+
+/* .header__dropbtn {
+  background: transparent url("../../assets/dropbtn.svg") center no-repeat;
+  border: none;
+  width: 44px;
+  height: 44px;
+} */
+
+@media screen and (max-width: 480px) {
+  .header {
+    max-width: 100%;
+    padding: 18px 16px 32px 16px;
+  }
+  /* 
+  .header__dropdown-container {
+    display: inline-block;
+  }
+
+  #navbar {
+    display: hidden;
+  } */
+}

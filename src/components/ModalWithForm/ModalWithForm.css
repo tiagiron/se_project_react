@@ -1,0 +1,76 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+}
+
+.modal_opened {
+  visibility: visible;
+}
+
+.modal__title {
+  margin: 0 0 24px 0;
+}
+
+.modal__close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  background: transparent url("../../assets/close.svg") center no-repeat;
+  border: none;
+  width: 20px;
+  height: 20px;
+  transition: opacity linear 0.5s;
+}
+
+.modal__close:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.modal__content {
+  background-color: #fff;
+  position: relative;
+  padding: 28px 28px 36px;
+  max-width: 496px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 20px;
+  font-family: "Cabinet-Grotesk", arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+}
+
+.modal__submit {
+  font-family: "Cabinet-Grotesk", arial, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  width: 124px;
+  transition: linear 5ms background-color;
+}
+
+.modal__submit:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+}
