@@ -8,6 +8,12 @@
   line-height: 24px;
 }
 
+.header__content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
 .header__logo {
   margin-right: 24px;
 }
@@ -16,8 +22,13 @@
   margin: 0;
 }
 
+.header__nav-container {
+  display: flex;
+  margin: 0 0 0 auto;
+}
+
 .header__button {
-  margin: 0 20px 0 auto;
+  margin-right: 20px;
   border: none;
   font-family: "Cabinet-Grotesk", arial, sans-serif;
   font-weight: 700;
@@ -40,30 +51,102 @@
   margin: 0;
 }
 
-.header__dropdown-container {
-  display: none;
+.header__menu {
+  visibility: hidden;
+  border: none;
+  background: transparent url("../../assets/header-menu-icon.png") center
+    no-repeat;
+  background-color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: none;
+}
+
+.header__menu_close {
+  visibility: hidden;
+  z-index: 2;
+  background: transparent url("../../assets/header-menu-close.svg") center
+    no-repeat;
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  border: none;
+  top: 29px;
+  right: 29px;
 }
 
 /* // Working on Responsive Design// */
 
-/* .header__dropbtn {
-  background: transparent url("../../assets/dropbtn.svg") center no-repeat;
-  border: none;
-  width: 44px;
-  height: 44px;
-} */
-
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 650px) {
   .header {
     max-width: 100%;
-    padding: 18px 16px 32px 16px;
-  }
-  /* 
-  .header__dropdown-container {
-    display: inline-block;
+    padding: 18px 0 16px;
   }
 
-  #navbar {
-    display: hidden;
-  } */
+  .header__content {
+    display: grid;
+    grid-template-areas:
+      "logo menu"
+      "location location";
+  }
+
+  .header__logo {
+    grid-area: logo;
+    justify-self: start;
+  }
+
+  .header__menu {
+    visibility: visible;
+    justify-self: end;
+    grid-area: menu;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header__menu_close {
+    visibility: visible;
+  }
+
+  .header__location {
+    grid-area: location;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 32px auto 0 0;
+  }
+
+  .header__nav-container {
+    display: none;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    z-index: 1;
+    top: 18px;
+    left: 16px;
+    width: calc(100% - 32px);
+    box-sizing: border-box;
+    height: 208px;
+    border-radius: 10px;
+    display: grid;
+    background-color: #ffffff;
+    justify-items: center;
+    grid-template-areas:
+      "user user "
+      "addClothes addClothes ";
+    margin: 0;
+    box-shadow: 0 2px #0000001a;
+  }
+
+  .header__button {
+    grid-area: addClothes;
+    background-color: transparent;
+    margin: 24px 0 60px 0;
+  }
+
+  .header__user-container {
+    grid-area: user;
+    margin-top: 60px;
+  }
 }

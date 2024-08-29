@@ -2,50 +2,54 @@ import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
 
-function Header({ weatherData, handleAddClick }) {
+function Header({
+  weatherData,
+  handleAddClick,
+  isMobileMenuOpened,
+  toggleMobileMenu,
+}) {
   const currentDate = new Date().toLocaleString("default", {
     month: "long",
     day: "numeric",
   });
+
   return (
     <header className="header">
-      <img className="header__logo" src={logo} alt="Logo" />
-      <p className="header__location">
-        {currentDate}, {weatherData.city}
-      </p>
-      <button
-        type="button"
-        className="header__button"
-        id="navbar"
-        onClick={handleAddClick}
-      >
-        + Add Clothes
-      </button>
-      <div className="header__user-container" id="navbar">
-        <p className="header__username">Tia Giron</p>
-        <img src={avatar} alt="Avatar" className="header__avatar" />
-      </div>
-      {/* Working on Responsive Design */}
-      <div className="header__dropdown-container">
-        <button className="header__dropbtn"></button>
-        <div className="header__dropdown-content">
-          <div className="header__user-container-dropdown">
-            <p className="header__username-dropdown">Tia Giron</p>
-            <img
-              src={avatar}
-              alt="Avatar"
-              className="header__avatar-dropdown"
-            />
-          </div>
+      <nav className="header__content">
+        <img className="header__logo" src={logo} alt="Logo" />
+
+        <p className="header__location">
+          {currentDate}, {weatherData.city}
+        </p>
+        {isMobileMenuOpened ? (
+          <button
+            className="header__menu_close"
+            type="button"
+            onClick={toggleMobileMenu}
+          />
+        ) : (
+          <button
+            className="header__menu"
+            type="button"
+            onClick={toggleMobileMenu}
+          />
+        )}
+        <div
+          className={`header__nav-container ${isMobileMenuOpened && "mobile-menu"}`}
+        >
           <button
             type="button"
-            className="header__button-dropdown"
+            className="header__button"
             onClick={handleAddClick}
           >
             + Add Clothes
           </button>
+          <div className="header__user-container">
+            <p className="header__username">Tia Giron</p>
+            <img src={avatar} alt="Avatar" className="header__avatar" />
+          </div>
         </div>
-      </div>
+      </nav>
     </header>
   );
 }
