@@ -2,34 +2,26 @@ import "./AddItemModal.css";
 import React from "react";
 import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
 const AddItemModal = ({
   closeActiveModal,
-  handleSubmit,
   isValid,
-  handleChange,
+  onAddItem,
   activeModal,
   isOpen,
 }) => {
-  const [name, setName] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [weather, setWeather] = useState("");
+  /* FORM VALIDATION */
 
-  const handleImageUrlChange = (e) => {
-    setImageUrl(e.target.value);
-  };
+  const { values, handleChange, errors, isValid, setValues, resetForm } =
+    useFormAndValidation();
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleWeatherChange = (e) => {
-    setWeather(e.target.value);
-  };
-
-  const handleValuesSubmit = (e) => {
+  const handleSubmit = (e) => {
+    //should be onAddItem according to project 11
     e.preventDefault();
-    handleSubmit({ name, imageUrl, weather });
+    onAddItem({ values });
+    console.log("Form data: values");
+    resetForm();
   };
 
   return (
@@ -38,7 +30,7 @@ const AddItemModal = ({
       buttonText="Add garment"
       isOpen={activeModal === "add-garment"}
       onClose={closeActiveModal}
-      onSubmit={handleValuesSubmit}
+      onSubmit={handleSubmit}
       isValid={isValid}
     >
       <label htmlFor="name" className="modal__label">
@@ -49,10 +41,8 @@ const AddItemModal = ({
           id="name"
           name="name"
           placeholder="Name"
-          value={values.name || ""} //from form validation
-          // value={name} need to change name value
-          onChange={handleChange} //from form validation
-          //onChange={handleNameChange}
+          value={values.name || ""}
+          onChange={setValues}
           required
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
@@ -65,10 +55,8 @@ const AddItemModal = ({
           id="imageUrl"
           placeholder="Image URL"
           name="url"
-          value={values.url || ""} //from form validaiton
-          // value={imageUrl}
-          onChange={handleChange} // from form validation need to use with handleURLChange
-          // onChange={handleImageUrlChange}
+          value={values.url || ""}
+          onChange={setValues}
           required
         />
         {errors.url && <span className="modal__error">{errors.url}</span>}
@@ -83,7 +71,7 @@ const AddItemModal = ({
             name="weather"
             value="Hot"
             required
-            onChange={handleWeatherChange}
+            onChange={setValues}
           />
           Hot
         </label>
@@ -96,7 +84,7 @@ const AddItemModal = ({
             name="weather"
             value="Warm"
             required
-            onChange={handleWeatherChange}
+            onChange={setValues}
           />
           Warm
         </label>
@@ -109,7 +97,7 @@ const AddItemModal = ({
             name="weather"
             value="Cold"
             required
-            onChange={handleWeatherChange}
+            onChange={setValues}
           />
           Cold
         </label>

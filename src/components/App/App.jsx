@@ -11,7 +11,6 @@ import ItemModal from "../ItemModal/ItemModal";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import api from "../../utils/api";
 import { coordinates, APIkey } from "../../utils/constants";
-import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
@@ -46,6 +45,10 @@ function App() {
     currentTemperatureUnit === "F"
       ? setCurrentTemperatureUnit("C")
       : setCurrentTemperatureUnit("F");
+  };
+
+  const onAddItem = (values) => {
+    console.log(values);
   };
 
   const handleAddItemSubmit = (item) => {
@@ -98,19 +101,6 @@ function App() {
     };
   }, [activeModal]);
 
-  /* FORM VALIDATION */
-
-  const { values, handleChange, errors, isValid, setValues, resetForm } =
-    useFormAndValidation();
-
-  const handleSubmit = (e, values) => {
-    //should be onAddItem according to project 11
-    e.preventDefault();
-    console.log(values);
-    console.log("Form data: values");
-    resetForm();
-  };
-
   return (
     <div className="page">
       <CurrentTemperatureUnitContext.Provider
@@ -133,7 +123,10 @@ function App() {
                 />
               }
             />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={<Profile handleCardClick={handleCardClick} />}
+            />
           </Routes>
 
           <Footer />

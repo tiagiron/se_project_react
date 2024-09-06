@@ -14,5 +14,14 @@
 }
 
 .modal__footer {
-  margin: 20px 0 32px 32px;
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 32px 32px 32px;
+}
+
+.modal__delete {
+  color: #ff4d00;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
