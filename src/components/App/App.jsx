@@ -13,6 +13,7 @@ import api from "../../utils/api";
 import { coordinates, APIkey } from "../../utils/constants";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -62,9 +63,12 @@ function App() {
       .removeItem(card.id)
       .then(() => {
         setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        closeActiveModal();
       })
       .catch(console.error);
   };
+
+  const openConfirmationModal = () => {};
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -126,7 +130,6 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   cards={clothingItems}
-                  handleCardDelete={handleCardDelete}
                 />
               }
             />
@@ -135,8 +138,8 @@ function App() {
               element={
                 <Profile
                   handleCardClick={handleCardClick}
+                  handleAddClick={handleAddClick}
                   cards={clothingItems}
-                  handleCardDelete={handleCardDelete}
                 />
               }
             />
@@ -154,7 +157,11 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
+          handleCardDelete={handleCardDelete}
+          onConfirm={openConfirmationModal}
         />
+
+        <DeleteConfirmationModal handleCardDelete={handleCardDelete} />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
