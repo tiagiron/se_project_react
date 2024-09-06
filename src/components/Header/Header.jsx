@@ -1,6 +1,8 @@
 import "./Header.css";
 import logo from "../../assets/logo.svg";
 import avatar from "../../assets/avatar.png";
+import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+import { Link } from "react-router-dom";
 
 function Header({
   weatherData,
@@ -16,8 +18,9 @@ function Header({
   return (
     <header className="header">
       <nav className="header__content">
-        <img className="header__logo" src={logo} alt="Logo" />
-
+        <Link to="/">
+          <img className="header__logo" src={logo} alt="Logo" />
+        </Link>
         <p className="header__location">
           {currentDate}, {weatherData.city}
         </p>
@@ -37,6 +40,7 @@ function Header({
         <div
           className={`header__nav-container ${isMobileMenuOpened && "mobile-menu"}`}
         >
+          <ToggleSwitch />
           <button
             type="button"
             className="header__button"
@@ -44,10 +48,10 @@ function Header({
           >
             + Add Clothes
           </button>
-          <div className="header__user-container">
+          <Link to="/profile" className="header__user-container">
             <p className="header__username">Tia Giron</p>
             <img src={avatar} alt="Avatar" className="header__avatar" />
-          </div>
+          </Link>
         </div>
       </nav>
     </header>
