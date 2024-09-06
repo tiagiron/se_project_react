@@ -13,9 +13,19 @@
   height: 498px;
 }
 
+.modal__caption {
+  margin: 0;
+}
+
+.modal__weather {
+  margin: 12px 0 0 0;
+}
+
 .modal__footer {
   display: flex;
   justify-content: space-between;
+  align-items: start;
+  padding: 0;
   margin: 20px 32px 32px 32px;
 }
 
@@ -24,4 +34,10 @@
   border: none;
   padding: 0;
   margin: 0;
+  background-color: transparent;
+  font-size: 20px;
+}
+
+.modal__delete:hover {
+  cursor: pointer;
 }

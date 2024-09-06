@@ -132,10 +132,8 @@ function App() {
           <Footer />
         </div>
         <AddItemModal
+          isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
-          onSubmit={handleSubmit}
-          isValid={isValid}
-          onChange={handleChange}
           onAddItem={onAddItem}
         />
 

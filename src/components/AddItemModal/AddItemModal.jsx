@@ -4,20 +4,13 @@ import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-const AddItemModal = ({
-  closeActiveModal,
-  isValid,
-  onAddItem,
-  activeModal,
-  isOpen,
-}) => {
+const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
   /* FORM VALIDATION */
 
   const { values, handleChange, errors, isValid, setValues, resetForm } =
     useFormAndValidation();
 
   const handleSubmit = (e) => {
-    //should be onAddItem according to project 11
     e.preventDefault();
     onAddItem({ values });
     console.log("Form data: values");
@@ -28,7 +21,7 @@ const AddItemModal = ({
     <ModalWithForm
       title="New garment"
       buttonText="Add garment"
-      isOpen={activeModal === "add-garment"}
+      isOpen={isOpen}
       onClose={closeActiveModal}
       onSubmit={handleSubmit}
       isValid={isValid}
