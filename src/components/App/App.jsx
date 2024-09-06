@@ -47,16 +47,21 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const onAddItem = (values) => {
-    console.log(values);
-  };
-
   const handleAddItemSubmit = (item) => {
     api
       .addItem(item)
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleCardDelete = (card) => {
+    api
+      .removeItem(card.id)
+      .then(() => {
+        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
       })
       .catch(console.error);
   };
@@ -120,12 +125,20 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
+                  cards={clothingItems}
+                  handleCardDelete={handleCardDelete}
                 />
               }
             />
             <Route
               path="/profile"
-              element={<Profile handleCardClick={handleCardClick} />}
+              element={
+                <Profile
+                  handleCardClick={handleCardClick}
+                  cards={clothingItems}
+                  handleCardDelete={handleCardDelete}
+                />
+              }
             />
           </Routes>
 
@@ -134,7 +147,7 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
-          onAddItem={onAddItem}
+          onAddItem={handleAddItemSubmit}
         />
 
         <ItemModal

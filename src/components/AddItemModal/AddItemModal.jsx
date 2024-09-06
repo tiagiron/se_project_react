@@ -1,10 +1,9 @@
 import "./AddItemModal.css";
 import React from "react";
-import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
+const AddItemModal = ({ onClose, onAddItem, isOpen }) => {
   /* FORM VALIDATION */
 
   const { values, handleChange, errors, isValid, setValues, resetForm } =
@@ -12,7 +11,6 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ values });
     console.log("Form data: values");
     resetForm();
   };
@@ -22,7 +20,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
       title="New garment"
       buttonText="Add garment"
       isOpen={isOpen}
-      onClose={closeActiveModal}
+      onClose={onClose}
       onSubmit={handleSubmit}
       isValid={isValid}
     >
@@ -35,7 +33,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
           name="name"
           placeholder="Name"
           value={values.name || ""}
-          onChange={setValues}
+          onChange={handleChange}
           required
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
@@ -49,7 +47,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
           placeholder="Image URL"
           name="url"
           value={values.url || ""}
-          onChange={setValues}
+          onChange={handleChange}
           required
         />
         {errors.url && <span className="modal__error">{errors.url}</span>}
@@ -64,7 +62,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
             name="weather"
             value="Hot"
             required
-            onChange={setValues}
+            onChange={handleChange}
           />
           Hot
         </label>
@@ -77,7 +75,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
             name="weather"
             value="Warm"
             required
-            onChange={setValues}
+            onChange={handleChange}
           />
           Warm
         </label>
@@ -90,7 +88,7 @@ const AddItemModal = ({ closeActiveModal, onAddItem, isOpen }) => {
             name="weather"
             value="Cold"
             required
-            onChange={setValues}
+            onChange={handleChange}
           />
           Cold
         </label>
