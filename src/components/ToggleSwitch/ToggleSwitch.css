@@ -22,6 +22,7 @@
   text-align: center;
   cursor: pointer;
   position: absolute;
+  /* transition: left 2s ease-in-out; // want to animate */
 }
 
 .toggle-switch__slider-C {

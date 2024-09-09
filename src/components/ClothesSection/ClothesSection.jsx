@@ -1,8 +1,7 @@
 import "./ClothesSection.css";
-import { clothingItems } from "../../utils/constants";
 import ItemCard from "../ItemCard/ItemCard";
 
-function ClothesSection({ handleAddClick, handleCardClick }) {
+function ClothesSection({ handleAddClick, handleCardClick, clothingItems }) {
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">

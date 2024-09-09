@@ -3,15 +3,16 @@ import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-const AddItemModal = ({ onClose, isOpen }) => {
+const AddItemModal = ({ onClose, isOpen, onAddItem }) => {
   /* FORM VALIDATION */
 
   const { values, handleChange, errors, isValid, setValues, resetForm } =
     useFormAndValidation();
 
   const handleSubmit = (e) => {
+    console.log(values);
     e.preventDefault();
-    console.log("Form data: values");
+    onAddItem(values);
     resetForm();
   };
 
@@ -45,8 +46,8 @@ const AddItemModal = ({ onClose, isOpen }) => {
           className="modal__input"
           id="imageUrl"
           placeholder="Image URL"
-          name="url"
-          value={values.url || ""}
+          name="imageUrl"
+          value={values.imageUrl || ""}
           onChange={handleChange}
           required
         />

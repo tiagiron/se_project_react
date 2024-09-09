@@ -37,7 +37,6 @@ function App() {
 
   const openConfirmationModal = () => {
     setActiveModal("delete-confirmation");
-    //setSelectedCard(card) ?? need??
   };
 
   const closeActiveModal = () => {
@@ -66,9 +65,10 @@ function App() {
 
   const handleCardDelete = (card) => {
     api
-      .removeItem(card.id)
+      .removeItem(card._id)
       .then(() => {
-        setClothingItems((cards) => cards.filter((c) => c.id !== card.id));
+        setClothingItems((cards) => cards.filter((c) => c._id !== card._id));
+        setSelectedCard({});
         closeActiveModal();
       })
       .catch(console.error);
@@ -133,7 +133,7 @@ function App() {
                 <Main
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
-                  cards={clothingItems}
+                  clothingItems={clothingItems}
                 />
               }
             />
@@ -143,7 +143,7 @@ function App() {
                 <Profile
                   handleCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
-                  cards={clothingItems}
+                  clothingItems={clothingItems}
                 />
               }
             />
@@ -168,6 +168,7 @@ function App() {
           activeModal={activeModal}
           onClose={closeActiveModal}
           handleCardDelete={handleCardDelete}
+          selectedCard={selectedCard}
         />
       </CurrentTemperatureUnitContext.Provider>
     </div>
