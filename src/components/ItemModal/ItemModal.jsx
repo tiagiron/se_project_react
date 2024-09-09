@@ -9,7 +9,7 @@ function ItemModal({ activeModal, onClose, card, openConfirmationModal }) {
           type="button"
           className="modal__close modal__close_type_image"
         ></button>
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
           <div>
             <h2 className="modal__caption">{card.name}</h2>

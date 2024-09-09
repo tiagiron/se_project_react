@@ -1,4 +1,3 @@
-import "./AddItemModal.css";
 import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
@@ -61,7 +60,7 @@ const AddItemModal = ({ onClose, isOpen, onAddItem }) => {
             type="radio"
             id="hot"
             name="weather"
-            value="Hot"
+            value="hot"
             required
             onChange={handleChange}
           />
@@ -74,7 +73,7 @@ const AddItemModal = ({ onClose, isOpen, onAddItem }) => {
             type="radio"
             id="warm"
             name="weather"
-            value="Warm"
+            value="warm"
             required
             onChange={handleChange}
           />
@@ -87,7 +86,7 @@ const AddItemModal = ({ onClose, isOpen, onAddItem }) => {
             type="radio"
             id="cold"
             name="weather"
-            value="Cold"
+            value="cold"
             required
             onChange={handleChange}
           />

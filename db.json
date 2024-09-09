@@ -103,15 +103,16 @@
       "imageUrl": "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/wtwr-project/T-Shirt.png?etag=44ed1963c44ab19cd2f5011522c5fc09"
     },
     {
-      "name": "tia",
+      "name": "hat",
       "weather": "Warm",
-      "_id": 19
+      "imageUrl": "https://as1.ftcdn.net/v2/jpg/05/65/71/80/1000_F_565718058_oBWpvUaPifKCSxI2j2AnTJSR9UsACrPd.webp",
+      "_id": 17
     },
     {
-      "name": "tia",
-      "weather": "Hot",
-      "imageUrl": "https://link",
-      "_id": 20
+      "name": "ff",
+      "weather": "warm",
+      "imageUrl": "https://as2.ftcdn.net/v2/jpg/05/50/99/05/1000_F_550990528_AFpl6BePWn4zEfuejqtclrQgxQdgLCcr.webp",
+      "_id": 18
     }
   ]
 }
