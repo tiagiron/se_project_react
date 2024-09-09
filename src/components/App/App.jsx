@@ -34,6 +34,12 @@ function App() {
   const handleAddClick = () => {
     setActiveModal("add-garment");
   };
+
+  const openConfirmationModal = () => {
+    setActiveModal("delete-confirmation");
+    //setSelectedCard(card) ?? need??
+  };
+
   const closeActiveModal = () => {
     setActiveModal("");
   };
@@ -67,8 +73,6 @@ function App() {
       })
       .catch(console.error);
   };
-
-  const openConfirmationModal = () => {};
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
@@ -157,11 +161,14 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeActiveModal}
-          handleCardDelete={handleCardDelete}
-          onConfirm={openConfirmationModal}
+          openConfirmationModal={openConfirmationModal}
         />
 
-        <DeleteConfirmationModal handleCardDelete={handleCardDelete} />
+        <DeleteConfirmationModal
+          activeModal={activeModal}
+          onClose={closeActiveModal}
+          handleCardDelete={handleCardDelete}
+        />
       </CurrentTemperatureUnitContext.Provider>
     </div>
   );
