@@ -2,7 +2,7 @@ import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-const AddItemModal = ({ onClose, isOpen, onAddItem }) => {
+const AddItemModal = ({ onClose, isOpen, onAddItem, isLoading }) => {
   /* FORM VALIDATION */
 
   const { values, handleChange, errors, isValid, setValues, resetForm } =
