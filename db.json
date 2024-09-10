@@ -113,6 +113,12 @@
       "weather": "warm",
       "imageUrl": "https://as2.ftcdn.net/v2/jpg/05/50/99/05/1000_F_550990528_AFpl6BePWn4zEfuejqtclrQgxQdgLCcr.webp",
       "_id": 18
+    },
+    {
+      "name": "skirt",
+      "weather": "warm",
+      "imageUrl": "https://as2.ftcdn.net/v2/jpg/08/95/25/81/1000_F_895258184_MCjW4BWwXHe0xh0CLzMPMqRJbZiPy2to.jpg",
+      "_id": 19
     }
   ]
 }

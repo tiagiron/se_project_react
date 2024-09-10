@@ -53,12 +53,13 @@ function App() {
       : setCurrentTemperatureUnit("F");
   };
 
-  const handleAddItemSubmit = (item) => {
+  const handleAddItemSubmit = (item, resetForm) => {
     setIsLoading(true);
     api
       .addItem(item)
       .then((newItem) => {
         setClothingItems([newItem, ...clothingItems]);
+        resetForm();
         closeActiveModal();
       })
       .catch(console.error)
@@ -157,7 +158,7 @@ function App() {
           isOpen={activeModal === "add-garment"}
           onClose={closeActiveModal}
           onAddItem={handleAddItemSubmit}
-          isLoading={isLoading}
+          buttonText={isLoading ? "Saving" : "New garment"}
         />
 
         <ItemModal

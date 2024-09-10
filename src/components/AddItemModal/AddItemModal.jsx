@@ -2,7 +2,7 @@ import React from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 
-const AddItemModal = ({ onClose, isOpen, onAddItem, isLoading }) => {
+const AddItemModal = ({ onClose, isOpen, onAddItem, buttonText }) => {
   /* FORM VALIDATION */
 
   const { values, handleChange, errors, isValid, setValues, resetForm } =
@@ -11,14 +11,13 @@ const AddItemModal = ({ onClose, isOpen, onAddItem, isLoading }) => {
   const handleSubmit = (e) => {
     console.log(values);
     e.preventDefault();
-    onAddItem(values);
-    resetForm();
+    onAddItem(values, resetForm);
   };
 
   return (
     <ModalWithForm
       title="New garment"
-      buttonText="Add garment"
+      buttonText={buttonText}
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
