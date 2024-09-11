@@ -63,7 +63,7 @@ function App() {
         closeActiveModal();
       })
       .catch(console.error)
-      .finally(setIsLoading(false));
+      .finally(() => setIsLoading(false));
   };
 
   const handleCardDelete = (card) => {
