@@ -149,28 +149,6 @@ function App() {
           .catch((err) => console.log(err));
   };
 
-  const handleLogin = (email, password) => {
-    if (!email || !password) {
-      return;
-    }
-    auth
-      .authorize(email, password)
-      .then((data) => {
-        if (data.token && data.user) {
-          setToken(data.token);
-          setIsLoggedIn(true);
-          setIsLoggedInLoading(false);
-          setCurrentUser(data.user);
-          console.log(data.user);
-        } else {
-          console.error("No JWT token found in response");
-        }
-        closeActiveModal();
-      })
-      .catch(console.error("Error logging in"))
-      .finally(setIsLoggedInLoading(false));
-  };
-
   const handleRegistration = (email, password, name, avatar) => {
     auth
       .register(email, password, name, avatar)
@@ -214,8 +192,7 @@ function App() {
     }
   };
 
-  //useEffects
-  useEffect(() => {
+  function getUserData() {
     const jwt = getToken();
     if (!jwt) {
       console.log("No token found in localStorage");
@@ -233,7 +210,30 @@ function App() {
         removeToken();
         setIsLoggedInLoading(false);
       });
+  }
+  //useEffects
+  useEffect(() => {
+    getUserData();
   }, []);
+
+  const handleLogin = (email, password) => {
+    if (!email || !password) {
+      return;
+    }
+    auth
+      .authorize(email, password)
+      .then((data) => {
+        if (data.token) {
+          setToken(data.token);
+          getUserData();
+        } else {
+          console.error("No JWT token found in response");
+        }
+        closeActiveModal();
+      })
+      .catch(console.error("Error logging in"))
+      .finally(setIsLoggedInLoading(false));
+  };
 
   useEffect(() => {
     getWeather(coordinates, APIkey)
