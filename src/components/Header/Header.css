@@ -13,18 +13,17 @@
   align-items: center;
   width: 100%;
 }
+.header__nav-container {
+  display: flex;
+  margin: 0 0 0 auto;
+}
 
 .header__logo {
   margin-right: 24px;
 }
 
 .header__location {
-  margin: 0;
-}
-
-.header__nav-container {
-  display: flex;
-  margin: 0 0 0 auto;
+  margin: 0 auto 0 0;
 }
 
 .header__button {
@@ -49,6 +48,17 @@
   color: #000;
 }
 
+/* .header__link {
+  color: #000000;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+} */
+
+/* .header__menu-icon {
+  visibility: hidden;
+} */
+
 .header__username {
   margin: 0;
 }
@@ -65,21 +75,53 @@
   border: none;
 }
 
-.header__menu_close {
-  visibility: hidden;
-  z-index: 2;
-  background: transparent url("../../assets/header-menu-close.svg") center
-    no-repeat;
-  position: absolute;
-  width: 21px;
-  height: 21px;
-  padding: 0;
-  border: none;
-  top: 29px;
-  right: 29px;
+.header__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
-@media screen and (max-width: 480px) {
+.header__avatar-default {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ccc;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.header__guest-nav {
+  display: flex;
+  margin-left: 20px;
+}
+
+.header__login {
+  padding-left: 20px;
+  color: #000000;
+  border: none;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: bold;
+}
+
+.header__register {
+  color: #000000;
+  border: none;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: bold;
+}
+
+.header__right-content {
+  position: relative;
+  top: -25px;
+}
+
+@media screen and (max-width: 550px) {
   .header {
     max-width: 100%;
     padding: 18px 0 16px;
@@ -105,10 +147,6 @@
     padding: 0;
   }
 
-  .header__menu_close {
-    visibility: visible;
-  }
-
   .header__location {
     grid-area: location;
     font-size: 20px;
@@ -116,11 +154,30 @@
     margin: 32px auto 0 0;
   }
 
+  .header__right-content {
+    position: relative;
+    top: 0;
+    justify-self: end;
+  }
+
+  .header__guest-nav {
+    display: flex;
+    margin-left: 20px;
+  }
+
   .header__nav-container {
     display: none;
   }
 
-  .mobile-menu {
+  /* .header__mobile-view {
+    display: flex;
+    grid-area: menu;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    position: relative;
+  } */
+  /* .mobile-menu {
     position: fixed;
     z-index: 1;
     top: 18px;
@@ -137,7 +194,18 @@
       "addClothes addClothes ";
     margin: 0;
     box-shadow: 0 2px #0000001a;
-  }
+  } */
+
+  /* .header__menu-icon {
+    visibility: visible;
+    grid-area: menu;
+    background: transparent url(../../assets/header-menu-icon.png) no-repeat;
+    color: black;
+    border: none;
+    width: 54px;
+    height: 54px;
+    overflow: auto;
+  } */
 
   .header__button {
     grid-area: addClothes;
@@ -145,7 +213,7 @@
     margin: 24px 0 60px 0;
   }
 
-  .header__user-container {
+  .header__link {
     grid-area: user;
     margin-top: 60px;
   }

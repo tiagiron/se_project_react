@@ -1,0 +1,81 @@
+.mobile__menu {
+  position: fixed;
+  top: 18px;
+  left: 16px;
+  right: 16px;
+  z-index: 999;
+  visibility: hidden;
+  pointer-events: none;
+  transition-delay: 0s;
+  font-size: 20px;
+  line-height: 24.8px;
+  font-family: CabinetGrotesk;
+  font-weight: 700;
+  width: 100%;
+}
+
+/* .mobile-menu {
+    position: fixed;
+    z-index: 1;
+    top: 18px;
+    left: 16px;
+    width: calc(100% - 32px);
+    box-sizing: border-box;
+    height: 208px;
+    border-radius: 10px;
+    display: grid;
+    background-color: #ffffff;
+    justify-items: center;
+    grid-template-areas:
+      "user user "
+      "addClothes addClothes ";
+    margin: 0;
+    box-shadow: 0 2px #0000001a;
+  } */
+
+.mobile__user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  align-content: space-around;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+  background-color: #fff;
+  color: #000;
+  height: 208px;
+  border-radius: 10px;
+}
+
+.mobile__user-container_active {
+  visibility: visible;
+  pointer-events: all;
+}
+
+.mobile__close {
+  background: transparent url("../../assets/header-menu-close.svg") center
+    no-repeat;
+  z-index: 2;
+  position: absolute;
+  width: 21px;
+  height: 21px;
+  padding: 0;
+  border: none;
+  top: 29px;
+  right: 29px;
+}
+
+.mobile__add-clothes-btn {
+  border: none;
+  background-color: #e5e5e5;
+  box-shadow: 0px 2px 8px 5px #000000e4;
+  border-radius: 2px;
+}
+
+.mobile__avatar {
+  width: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0px 2px 8px 2px #888888;
+}

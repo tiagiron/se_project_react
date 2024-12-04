@@ -17,3 +17,6 @@ This project utilized intermediate and advanced CSS/JavaScript and React princip
 _Technologies_
 
 CSS/JavaScript/React
+
+_Back-End_
+https://github.com/tiagiron/se_project_express.git

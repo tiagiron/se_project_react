@@ -1,4 +1,4 @@
-import { handleServerResponse } from "./api";
+import { handleServerResponse } from "./constants";
 
 export const getWeather = ({ latitude, longitude }, APIkey) => {
   return fetch(
