@@ -42,10 +42,10 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoggedInLoading, setIsLoggedInLoading] = useState(true);
   const [currentUser, setCurrentUser] = useState({
-    name: "",
-    email: "",
-    avatar: "",
     _id: "",
+    email: "",
+    name: "",
+    avatar: "",
   });
 
   //open and close

@@ -30,7 +30,7 @@ export const register = (email, password, name, avatar) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ name, avatar, email, password }),
+    body: JSON.stringify({ email, password, name, avatar }),
   }).then(handleServerResponse);
 };
 

@@ -116,6 +116,14 @@
   font-weight: bold;
 }
 
+.header__login:hover {
+  cursor: pointer;
+}
+
+.header__register:hover {
+  cursor: pointer;
+}
+
 .header__right-content {
   position: relative;
   top: -25px;

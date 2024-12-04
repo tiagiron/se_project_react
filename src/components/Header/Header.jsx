@@ -38,7 +38,7 @@ function Header({
           {currentDate}, {weatherData.city}
         </p>
 
-        {isLoggedIn ? (
+        {!isLoggedIn ? (
           <div className="header__right-content">
             <button
               className="header__menu"

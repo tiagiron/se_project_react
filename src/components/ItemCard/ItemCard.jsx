@@ -22,15 +22,17 @@ function ItemCard({ item, onCardClick, addCardLike }) {
 
   return (
     <li className="card">
-      <h2 className="card__name">{item.name}</h2>
-      <img
-        className={itemLikeButtonClassName}
-        type="button"
-        aria-label="like"
-        onClick={handleLike}
-        src={isLiked ? active_like_button : like_button}
-        alt={isLiked ? "liked" : "not liked"}
-      />
+      <div className="card__container">
+        <h2 className="card__name">{item.name}</h2>
+        <img
+          className={itemLikeButtonClassName}
+          type="button"
+          aria-label="like"
+          onClick={handleLike}
+          src={isLiked ? active_like_button : like_button}
+          alt={isLiked ? "liked" : "not liked"}
+        />
+      </div>
       <img
         onClick={handleCardClick}
         className="card__image"
