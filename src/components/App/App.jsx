@@ -104,7 +104,7 @@ function App() {
         resetForm();
         closeActiveModal();
       })
-      .catch(console.error("Error adding item"))
+      .catch((e) => console.error("Error adding item", e))
       .finally(() => setIsLoading(false));
   };
 
@@ -121,7 +121,7 @@ function App() {
         setSelectedCard({});
         closeActiveModal();
       })
-      .catch(console.error("Error deleting card"));
+      .catch((e) => console.error("Error deleting card", e));
   };
 
   const handleCardLike = ({ id, isLiked }) => {
@@ -156,7 +156,7 @@ function App() {
         handleLogin({ email, password });
         closeActiveModal();
       })
-      .catch(console.error("Error registering user"));
+      .catch((e) => console.error("Error registering user", e));
   };
 
   const handleEditProfile = (name, avatar) => {
@@ -178,7 +178,7 @@ function App() {
         });
         closeActiveModal();
       })
-      .catch(console.error("Error updating profile"));
+      .catch((e) => console.error("Error updating profile", e));
   };
 
   const handleLogOut = () => {
@@ -237,7 +237,7 @@ function App() {
         }
         closeActiveModal();
       })
-      .catch(console.error("Error logging in"))
+      .catch((e) => console.error("Error logging in", e))
       .finally(setIsLoggedInLoading(false));
   };
 
@@ -247,7 +247,7 @@ function App() {
         const filteredData = filterWeatherData(data);
         setWeatherData(filteredData);
       })
-      .catch(console.error);
+      .catch((e) => console.error(e));
   }, []);
 
   useEffect(() => {
@@ -256,7 +256,7 @@ function App() {
       .then((items) => {
         setClothingItems(items);
       })
-      .catch(console.error);
+      .catch((e) => console.error(e));
   }, []);
 
   useEffect(() => {
@@ -318,17 +318,17 @@ function App() {
                 <Route
                   path="/profile"
                   element={
-                    // <ProtectedRoute>
-                    <Profile
-                      handleCardClick={handleCardClick}
-                      handleAddClick={handleAddClick}
-                      clothingItems={clothingItems}
-                      selectedCard={selectedCard}
-                      addCardLike={handleCardLike}
-                      openEditProfileModal={openEditProfileModal}
-                      handleLogout={handleLogOut}
-                    />
-                    // </ProtectedRoute>
+                    <ProtectedRoute>
+                      <Profile
+                        handleCardClick={handleCardClick}
+                        handleAddClick={handleAddClick}
+                        clothingItems={clothingItems}
+                        selectedCard={selectedCard}
+                        addCardLike={handleCardLike}
+                        openEditProfileModal={openEditProfileModal}
+                        handleLogout={handleLogOut}
+                      />
+                    </ProtectedRoute>
                   }
                 />
               </Routes>

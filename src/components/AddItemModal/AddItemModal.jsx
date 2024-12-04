@@ -28,7 +28,6 @@ const AddItemModal = ({ onClose, isOpen, onAddItem, buttonText }) => {
         <input
           type="text"
           className="modal__input"
-          id="name"
           name="name"
           placeholder="Name"
           value={values.name || ""}
@@ -42,7 +41,6 @@ const AddItemModal = ({ onClose, isOpen, onAddItem, buttonText }) => {
         <input
           type="url"
           className="modal__input"
-          id="imageUrl"
           placeholder="Image URL"
           name="imageUrl"
           value={values.imageUrl || ""}

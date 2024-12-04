@@ -40,7 +40,6 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
         <input
           type="text"
           className="modal__input"
-          id="name"
           name="name"
           placeholder="Name"
           value={values.name || ""}
@@ -54,7 +53,6 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
         <input
           type="url"
           className="modal__input"
-          id="avatar"
           placeholder="Avatar URL"
           name="avatar"
           value={values.avatar || ""}

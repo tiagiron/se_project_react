@@ -11,7 +11,7 @@ function ItemCard({ item, onCardClick, addCardLike }) {
   const isLiked = item.likes.some((id) => id === currentUser._id);
 
   // Create a variable which you then set in `className` for the like button
-  const itemLikeButtonClassName = `card__like-button ${currentUser ? "card__like-button-visible" : "card__like-button-hidden"}`;
+  const itemLikeButtonClassName = `card__like-button ${currentUser._id ? "card__like-button-visible" : "card__like-button-hidden"}`;
 
   const handleCardClick = () => {
     onCardClick(item);

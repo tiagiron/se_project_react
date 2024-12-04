@@ -35,7 +35,6 @@ const LoginModal = ({
         <input
           type="email"
           className="modal__input"
-          id="email"
           name="email"
           placeholder="Email"
           value={values.email || ""}
@@ -49,7 +48,6 @@ const LoginModal = ({
         <input
           type="password"
           className="modal__input"
-          id="password"
           placeholder="Password"
           name="password"
           value={values.password || ""}

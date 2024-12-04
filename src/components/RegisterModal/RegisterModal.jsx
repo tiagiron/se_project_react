@@ -39,7 +39,6 @@ function RegisterModal({
         <input
           type="email"
           className="modal__input"
-          id="email"
           name="email"
           placeholder="Email"
           value={values.email || ""}
@@ -54,7 +53,6 @@ function RegisterModal({
         <input
           type="password"
           className="modal__input"
-          id="password"
           placeholder="Password"
           name="password"
           value={values.password || ""}
@@ -70,7 +68,6 @@ function RegisterModal({
         <input
           type="name"
           className="modal__input"
-          id="name"
           placeholder="Name"
           name="name"
           value={values.name || ""}
@@ -84,7 +81,6 @@ function RegisterModal({
         <input
           type="url"
           className="modal__input"
-          id="avatar"
           placeholder="Avatar URL"
           name="avatar"
           value={values.avatar || ""}
