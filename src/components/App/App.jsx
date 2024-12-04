@@ -201,14 +201,14 @@ function App() {
     auth
       .getUserInfo(jwt)
       .then((data) => {
-        const user = data.user;
+        // const user = data;
         setIsLoggedInLoading(false);
         setIsLoggedIn(true);
         setCurrentUser({
-          _id: currentUser._id,
-          email: currentUser.email,
-          name: user.name,
-          avatar: user.avatar,
+          _id: data._id,
+          email: data.email,
+          name: data.name,
+          avatar: data.avatar,
         });
       })
       .catch((error) => {
