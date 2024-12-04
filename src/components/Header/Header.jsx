@@ -19,7 +19,7 @@ function Header({
   });
 
   const currentUser = useContext(CurrentUserContext);
-  const isLoggedIn = useContext(AppContext);
+  const { isLoggedIn } = useContext(AppContext);
 
   const getInitial = (name) => {
     if (name) {
