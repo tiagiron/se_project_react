@@ -201,9 +201,15 @@ function App() {
     auth
       .getUserInfo(jwt)
       .then((data) => {
+        const user = data.user;
         setIsLoggedInLoading(false);
         setIsLoggedIn(true);
-        setCurrentUser(data.user);
+        setCurrentUser({
+          _id: currentUser._id,
+          email: currentUser.email,
+          name: user.name,
+          avatar: user.avatar,
+        });
       })
       .catch((error) => {
         console.error("Invalid token", error);
