@@ -42,3 +42,11 @@
 .modal__delete:hover {
   cursor: pointer;
 }
+
+.modal__delete_visible {
+  display: block;
+}
+
+.modal__delete_hidden {
+  display: none;
+}

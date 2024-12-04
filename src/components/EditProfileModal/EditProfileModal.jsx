@@ -22,7 +22,7 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
   const handleSubmit = (e) => {
     console.log(values);
     e.preventDefault();
-    handleEditProfile(values);
+    handleEditProfile(values.name, values.avatar);
   };
 
   return (
@@ -36,7 +36,7 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
       isValid={isValid}
     >
       <label className="modal__label">
-        Name{" "}
+        Name *{" "}
         <input
           type="text"
           className="modal__input"
@@ -50,20 +50,18 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
       <label className="modal__label">
-        Avatar{" "}
+        Avatar *{" "}
         <input
           type="url"
           className="modal__input"
-          id="avatarUrl"
+          id="avatar"
           placeholder="Avatar URL"
-          name="avatarUrl"
-          value={values.avatarUrl || ""}
+          name="avatar"
+          value={values.avatar || ""}
           onChange={handleChange}
           required
         />
-        {errors.avatarUrl && (
-          <span className="modal__error">{errors.avatarUrl}</span>
-        )}
+        {errors.avatar && <span className="modal__error">{errors.avatar}</span>}
       </label>
     </ModalWithForm>
   );

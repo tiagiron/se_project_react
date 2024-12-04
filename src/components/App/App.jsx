@@ -181,7 +181,7 @@ function App() {
       .catch(console.error("Error registering user"));
   };
 
-  const handleEditProfile = ({ name, avatar }) => {
+  const handleEditProfile = (name, avatar) => {
     const token = getToken();
     if (!currentUser) {
       console.error("Not authorized to edit profile");
