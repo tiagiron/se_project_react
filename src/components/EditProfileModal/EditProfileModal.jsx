@@ -14,7 +14,7 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
     if (isOpen) {
       setValues({
         name: currentUser.name,
-        avatar: currentUser.avatar,
+        avatarUrl: currentUser.avatar,
       });
     }
   }, [isOpen, setValues, currentUser]);
@@ -35,12 +35,13 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
       onSubmit={handleSubmit}
       isValid={isValid}
     >
-      <label className="modal__label">
+      <label className="modal__label" htmlFor="edit-name">
         Name *{" "}
         <input
           type="text"
           className="modal__input"
           name="name"
+          id="edit-name"
           placeholder="Name"
           value={values.name || ""}
           onChange={handleChange}
@@ -48,13 +49,14 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
-      <label className="modal__label">
+      <label className="modal__label" htmlFor="edit-avatar">
         Avatar *{" "}
         <input
           type="url"
           className="modal__input"
           placeholder="Avatar URL"
           name="avatar"
+          id="edit-avatar"
           value={values.avatar || ""}
           onChange={handleChange}
           required

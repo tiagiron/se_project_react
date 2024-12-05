@@ -30,12 +30,13 @@ const LoginModal = ({
       onSubmit={handleSubmit}
       isValid={isValid}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="login-email" className="modal__label">
         Email{" "}
         <input
           type="email"
           className="modal__input"
           name="email"
+          id="login-email"
           placeholder="Email"
           value={values.email || ""}
           onChange={handleChange}
@@ -43,13 +44,14 @@ const LoginModal = ({
         />
         {errors.email && <span className="modal__error">{errors.name}</span>}
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="login-password" className="modal__label">
         Password{" "}
         <input
           type="password"
           className="modal__input"
           placeholder="Password"
           name="password"
+          id="login-password"
           value={values.password || ""}
           onChange={handleChange}
           required

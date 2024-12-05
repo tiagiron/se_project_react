@@ -23,12 +23,13 @@ const AddItemModal = ({ onClose, isOpen, onAddItem, buttonText }) => {
       onSubmit={handleSubmit}
       isValid={isValid}
     >
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="add-name" className="modal__label">
         Name{" "}
         <input
           type="text"
           className="modal__input"
           name="name"
+          id="add-name"
           placeholder="Name"
           value={values.name || ""}
           onChange={handleChange}
@@ -36,13 +37,14 @@ const AddItemModal = ({ onClose, isOpen, onAddItem, buttonText }) => {
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
-      <label htmlFor="imageUrl" className="modal__label">
+      <label htmlFor="add-imageUrl" className="modal__label">
         Image{" "}
         <input
           type="url"
           className="modal__input"
           placeholder="Image URL"
           name="imageUrl"
+          id="add-imageUrl"
           value={values.imageUrl || ""}
           onChange={handleChange}
           required

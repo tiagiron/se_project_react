@@ -34,12 +34,13 @@ function RegisterModal({
       onSubmit={handleSubmit}
       isValid={isValid}
     >
-      <label htmlFor="email" className="modal__label">
+      <label htmlFor="register-email" className="modal__label">
         Email*{" "}
         <input
           type="email"
           className="modal__input"
           name="email"
+          id="register-email"
           placeholder="Email"
           value={values.email || ""}
           onChange={handleChange}
@@ -48,13 +49,14 @@ function RegisterModal({
         />
         {errors.email && <span className="modal__error">{errors.email}</span>}
       </label>
-      <label htmlFor="password" className="modal__label">
+      <label htmlFor="register-password" className="modal__label">
         Password*{" "}
         <input
           type="password"
           className="modal__input"
           placeholder="Password"
           name="password"
+          id="register-password"
           value={values.password || ""}
           onChange={handleChange}
           required
@@ -63,26 +65,28 @@ function RegisterModal({
           <span className="modal__error">{errors.password}</span>
         )}
       </label>
-      <label htmlFor="name" className="modal__label">
+      <label htmlFor="register-name" className="modal__label">
         Name*{" "}
         <input
           type="name"
           className="modal__input"
           placeholder="Name"
           name="name"
+          id="register-name"
           value={values.name || ""}
           onChange={handleChange}
           required
         />
         {errors.name && <span className="modal__error">{errors.name}</span>}
       </label>
-      <label htmlFor="avatar" className="modal__label">
+      <label htmlFor="register-avatar" className="modal__label">
         Avatar URL*{" "}
         <input
           type="url"
           className="modal__input"
           placeholder="Avatar URL"
           name="avatar"
+          id="register-avatar"
           value={values.avatar || ""}
           onChange={handleChange}
           required
