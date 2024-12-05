@@ -13,7 +13,7 @@ function ClothesSection({
   const userClothingItems = clothingItems.filter(
     (item) => item.owner === currentUser._id,
   );
-  const clothesSectionClassName = `clothes-section__cards-list ${isOwn ? "clothes-section__cards-list_visible" : "clothes-section__cards-list_hidden"}`;
+
   return (
     <div className="clothes-section">
       <div className="clothes-section__header">
@@ -25,7 +25,7 @@ function ClothesSection({
           + Add new
         </button>
       </div>
-      <ul className={clothesSectionClassName}>
+      <ul className="clothes-section__cards-list">
         {userClothingItems.map((item) => {
           return (
             <ItemCard
