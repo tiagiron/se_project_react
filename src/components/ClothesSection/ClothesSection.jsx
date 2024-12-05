@@ -7,7 +7,7 @@ function ClothesSection({
   handleAddClick,
   handleCardClick,
   clothingItems,
-  addCardLike,
+  handleCardLike,
 }) {
   const isOwn = clothingItems === CurrentUserContext._id;
   const clothesSectionClassName = `clothes-section__cards-list ${isOwn ? "clothes-section__cards-list_visible" : "clothes-section__cards-list_hidden"}`;
@@ -29,7 +29,7 @@ function ClothesSection({
               key={item._id}
               item={item}
               onCardClick={handleCardClick}
-              addCardLike={addCardLike}
+              addCardLike={handleCardLike}
             />
           );
         })}

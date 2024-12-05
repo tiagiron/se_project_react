@@ -14,7 +14,7 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
     if (isOpen) {
       setValues({
         name: currentUser.name,
-        avatarUrl: currentUser.avatar,
+        avatar: currentUser.avatar,
       });
     }
   }, [isOpen, setValues, currentUser]);

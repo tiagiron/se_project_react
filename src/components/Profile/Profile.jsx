@@ -9,7 +9,7 @@ function Profile({
   selectedCard,
   openEditProfileModal,
   handleLogout,
-  addCardLike,
+  handleCardLike,
 }) {
   return (
     <div className="profile">
@@ -25,7 +25,7 @@ function Profile({
           handleCardClick={handleCardClick}
           clothingItems={clothingItems}
           selectedCard={selectedCard}
-          addCardLike={addCardLike}
+          handleCardLike={handleCardLike}
         />
       </section>
     </div>

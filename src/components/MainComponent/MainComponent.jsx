@@ -4,7 +4,7 @@ import WeatherCard from "../WeatherCard/WeatherCard";
 import ItemCard from "../ItemCard/ItemCard";
 import "./MainComponent.css";
 
-function Main({ weatherData, handleCardClick, clothingItems, handleLike }) {
+function Main({ weatherData, handleCardClick, clothingItems, handleCardLike }) {
   const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
   console.log(weatherData);
 
@@ -27,7 +27,7 @@ function Main({ weatherData, handleCardClick, clothingItems, handleLike }) {
                   key={item._id}
                   item={item}
                   onCardClick={handleCardClick}
-                  addCardLike={handleLike}
+                  addCardLike={handleCardLike}
                 />
               );
             })}

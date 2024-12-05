@@ -16,7 +16,7 @@ function ItemCard({ item, onCardClick, addCardLike }) {
   const handleCardClick = () => {
     onCardClick(item);
   };
-  const handleLike = () => {
+  const handleCardLike = () => {
     addCardLike({ id: item._id, isLiked });
   };
 
@@ -28,7 +28,7 @@ function ItemCard({ item, onCardClick, addCardLike }) {
           className={itemLikeButtonClassName}
           type="button"
           aria-label="like"
-          onClick={handleLike}
+          onClick={handleCardLike}
           src={isLiked ? active_like_button : like_button}
           alt={isLiked ? "liked" : "not liked"}
         />

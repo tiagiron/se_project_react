@@ -169,12 +169,11 @@ function App() {
     auth
       .editProfileData(name, avatar, token)
       .then((data) => {
-        const user = data.user;
         setCurrentUser({
-          _id: currentUser._id,
-          email: currentUser.email,
-          name: user.name,
-          avatar: user.avatar,
+          _id: data._id,
+          email: data.email,
+          name: data.name,
+          avatar: data.avatar,
         });
         closeActiveModal();
       })
@@ -201,7 +200,6 @@ function App() {
     auth
       .getUserInfo(jwt)
       .then((data) => {
-        // const user = data;
         setIsLoggedInLoading(false);
         setIsLoggedIn(true);
         setCurrentUser({
@@ -311,7 +309,7 @@ function App() {
                       weatherData={weatherData}
                       handleCardClick={handleCardClick}
                       clothingItems={clothingItems}
-                      addCardLike={handleCardLike}
+                      handleCardLike={handleCardLike}
                     />
                   }
                 />
@@ -324,7 +322,7 @@ function App() {
                         handleAddClick={handleAddClick}
                         clothingItems={clothingItems}
                         selectedCard={selectedCard}
-                        addCardLike={handleCardLike}
+                        handleCardLike={handleCardLike}
                         openEditProfileModal={openEditProfileModal}
                         handleLogout={handleLogOut}
                       />
