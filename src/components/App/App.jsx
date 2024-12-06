@@ -170,8 +170,8 @@ function App() {
       .editProfileData(name, avatar, token)
       .then((data) => {
         setCurrentUser({
-          _id: data._id,
-          email: data.email,
+          _id: currentUser._id,
+          email: currentUser.email,
           name: data.name,
           avatar: data.avatar,
         });

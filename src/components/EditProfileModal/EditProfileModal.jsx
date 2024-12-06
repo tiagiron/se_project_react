@@ -11,10 +11,11 @@ function EditProfileModal({ onClose, isOpen, buttonText, handleEditProfile }) {
     useFormAndValidation();
 
   useEffect(() => {
+    console.log(currentUser);
     if (isOpen) {
       setValues({
         name: currentUser.name,
-        avatarUrl: currentUser.avatar,
+        avatar: currentUser.avatar,
       });
     }
   }, [isOpen, setValues, currentUser]);
